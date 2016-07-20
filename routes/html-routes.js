@@ -35,8 +35,8 @@ module.exports = function(app){
 
 	//GETs
 
-	app.get('/', function(req, res){
-		res.render('index', {
+	app.get('/verify', function(req, res){
+		res.render('verify', {
 			welcomeText: "Sign In",
 			actionBtn: 'signin',
 			message: req.flash('error')[0],
@@ -49,7 +49,7 @@ module.exports = function(app){
 	});
 
 	app.get('/signup', function(req, res){
-		res.render('index', {
+		res.render('verify', {
 			welcomeText: "Sign Up",
 			actionBtn: 'signup',
 			otherAction: "Signin"
@@ -60,8 +60,16 @@ module.exports = function(app){
 	//		My Stuff between the lines!
 	/////////////////////////////////////////////
 
-	app.get('/index2', function(req, res){
-		res.render('index2', {
+	app.get('/', function(req, res){
+		res.render('/index', {
+			//welcomeText: "Sign Up",
+			//actionBtn: 'signup',
+			//otherAction: "Signin"
+		});
+	});
+
+	app.get('/index', function(req, res){
+		res.render('/', {
 			//welcomeText: "Sign Up",
 			//actionBtn: 'signup',
 			//otherAction: "Signin"
@@ -115,7 +123,7 @@ module.exports = function(app){
 				username: req.user.username
 			})
 		} else {
-			res.redirect('/')
+			res.redirect('/verify')
 		}
 	});
 
@@ -126,7 +134,7 @@ module.exports = function(app){
 
 	//POSTs
 
-	app.post('/signin', passport.authenticate('local',{failureRedirect:'/', failureFlash:'Wrong Username or Password'}), function(req, res){
+	app.post('/signin', passport.authenticate('local',{failureRedirect:'/verify', failureFlash:'Wrong Username or Password'}), function(req, res){
 		res.redirect('/authenticated');
 	});
 
@@ -137,7 +145,7 @@ module.exports = function(app){
 				res.redirect('/signup')
 				return false
 			}
-			res.redirect('/');
+			res.redirect('/verify');
 		});
 	});
 
