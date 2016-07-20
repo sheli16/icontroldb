@@ -69,11 +69,7 @@ module.exports = function(app){
 	});
 
 	app.get('/index', function(req, res){
-		res.redirect('/', {
-			//welcomeText: "Sign Up",
-			//actionBtn: 'signup',
-			//otherAction: "Signin"
-		});
+		res.redirect('/');
 	});
 
 	app.get('/page2', function(req, res){
