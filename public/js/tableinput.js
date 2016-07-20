@@ -2,27 +2,47 @@
 //grabs the data that was sent to firebase and displays it in the table
 
 //on ready function
-$(document).ready(function(){
+var mysql = require('mysql');
 
-	//function to grab data and populate a table for the user
-	function iControlTable(){
+var connection = mysql.createConnection({
+	host: 'localhost',
+	user: 'root',
+	password: process.argv[2],
+	invUserIdVar: process.arg[3],
+	database: 'icontrol_db'
+});
 
-		//on click to grab information from the row, send it to SQL database and clear it
-		$('#sendRowButton').on('click', function() {
+function connectToDB(){
+	connection.connect(function(err){
+		if (err) {
+			console.error('error connection:', err.stack);
+			return
+		}
+		console.log('connected to MySQL DB')
+	});
+}
+
+module.exports.connectToDB = connectToDB;
+
+function addInvToDB(userObj, callback){
+	connection.query('INSERT INTO inventory (userId, invName, invDesc, invGroup, invWSP, invRTP, invStock, invMRP) VALUES (invUserIdVar, invNameVar, invDescVar, invWSPVar, invRTPVar, invStockVar, invMRPVar) ', userObj, function(err, results){
+		if (err) return callback(false, err)
+		callback(true. null)
+	});
+}
+
+module.exports.addInvToDB = addInvToDB;
+
+
+
+
 
 			// Grabs user input from each section
-			var invName = $("#nameInput").val().trim();
-			var invDesc = $("#desriptionInput").val().trim();
-			var invGroup = $("#groupInput").val().trim();
-			var invWSP =$("#wholeSaleInput").val().trim();
-			var invRTP = $("#retailPriceInput").val().trim();
-			var invStock = $("#inStockInput").val().trim();
-			var invMRP =$("#mRPInput").val().trim();
+			// var invNameVar = $("#nameInput").val().trim();
+			// var invDescVar = $("#desriptionInput").val().trim();
+			// var invGroupVar = $("#groupInput").val().trim();
+			// var invWSPVar =$("#wholeSaleInput").val().trim();
+			// var invRTPVar = $("#retailPriceInput").val().trim();
+			// var invStockVar = $("#inStockInput").val().trim();
+			// var invMRPVar =$("#mRPInput").val().trim();
 
-			
-
-		} //ends sendRowButton onclick
-
-	}; //ends iControlTable function
-
-}); //ends document.ready function
