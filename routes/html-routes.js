@@ -61,7 +61,7 @@ module.exports = function(app){
 	/////////////////////////////////////////////
 
 	app.get('/', function(req, res){
-		res.render('/index', {
+		res.render('index', {
 			//welcomeText: "Sign Up",
 			//actionBtn: 'signup',
 			//otherAction: "Signin"
@@ -69,7 +69,7 @@ module.exports = function(app){
 	});
 
 	app.get('/index', function(req, res){
-		res.render('/', {
+		res.redirect('/', {
 			//welcomeText: "Sign Up",
 			//actionBtn: 'signup',
 			//otherAction: "Signin"
