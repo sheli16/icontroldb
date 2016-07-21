@@ -146,16 +146,18 @@
                 <!-- Initial two rows where the user can enter information to be stored in SQL and displayed -->
                 <tbody>
                 {{#each inventory1}}
-                    <tr>
-                      <td>{{this.invName}}</td>
-                      <td>{{this.invDesc}}</td> 
-                      <td>{{this.invGroup}}</td>
-                      <td>{{this.invWSP}}</td>
-                      <td>{{this.invRTP}}</td>
-                      <td>{{this.invStock}}</td>
-                      <td>{{this.invMRP}}</td>
-                      <td><i class="material-icons">delete</i></td>
-                    </tr>
+                    {{#if id}}
+                        <tr>
+                          <td>{{this.invName}}</td>
+                          <td>{{this.invDesc}}</td> 
+                          <td>{{this.invGroup}}</td>
+                          <td>{{this.invWSP}}</td>
+                          <td>{{this.invRTP}}</td>
+                          <td>{{this.invStock}}</td>
+                          <td>{{this.invMRP}}</td>
+                          <td><i class="material-icons">delete</i></td>
+                        </tr>
+                    {{/if}}
                {{/each}}
                     
 

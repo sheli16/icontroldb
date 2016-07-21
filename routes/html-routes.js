@@ -78,6 +78,7 @@ module.exports = function(app){
 		            	inventory1: result
 		            });
 			});
+			
 		}
 		else {
 			
