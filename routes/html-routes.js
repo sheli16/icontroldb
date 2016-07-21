@@ -156,12 +156,15 @@ module.exports = function(app){
 		    		
 	
 	app.post('/create', function (req, res) {
-		   
-		    
-		   console.log(req.body.descInput)
+		   if (req.isAuthenticated()) {
+			console.log(req.body.descInput)
 			ormdb.insertOne(req.user.userId, req.body.nameInput, req.body.descInput, req.body.groupInput, req.body.wholeSaleInput,req.body.retailPriceInput, req.body.inStockInput, req.body.mRPInput, function(result){			    
 					res.redirect('/page2'); 
 		    }); 
+		} else {
+			res.redirect('/verify')
+		}
+		   
 			
 
 	}); // end  app.post (create)
