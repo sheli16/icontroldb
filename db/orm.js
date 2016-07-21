@@ -1,4 +1,5 @@
 var mysql = require('mysql');
+var ormdb = require('../db/ormdb.js');
 
 var connection = mysql.createConnection({
 	host: 'localhost',

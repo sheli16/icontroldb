@@ -71,7 +71,7 @@
                       </td>
                       <td>
                           <label>
-                            <input id="desriptionInput" name="desriptionInput" type="text" placeholder="" />
+                            <input id="descInput" name="descInput" type="text" placeholder="" />
                           </label>
                       </td>
 
@@ -146,49 +146,21 @@
 
                 <!-- Initial two rows where the user can enter information to be stored in SQL and displayed -->
                 <tbody>
-                    <tr>
-                      <td>Name</td>
-                      <td></td> 
-                      <td></td>
-                      <td></td>
-                      <td>3424</td>
-                      <td></td>
-                      <td></td>
-                      <td><i class="material-icons">delete</i></td>
-                    </tr>
-               
-                    <tr>
-                      <td></td>
-                      <td></td> 
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td><i class="material-icons">delete</i></td>
-                    </tr>
-                
-                    <tr>
-                      <td></td>
-                      <td></td> 
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td><i class="material-icons">delete</i></td>
-                    </tr>
-
-                    <tr>
-                      <td></td>
-                      <td></td> 
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td><i class="material-icons">delete</i></td>
-                    </tr>
+                {{#each inventory1}}
+                    {{#if id}}
+                        <tr>
+                          <td>{{this.invName}}</td>
+                          <td>{{this.invDesc}}</td> 
+                          <td>{{this.invGroup}}</td>
+                          <td>{{this.invWSP}}</td>
+                          <td>{{this.invRTP}}</td>
+                          <td>{{this.invStock}}</td>
+                          <td>{{this.invMRP}}</td>
+                          <td><i class="material-icons">delete</i></td>
+                        </tr>
+                    {{/if}}
+               {{/each}}
+                    
 
                 </tbody>
 
