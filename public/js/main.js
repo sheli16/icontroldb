@@ -3,12 +3,12 @@ var page4 = require('page4');
 var page2 = require('page2');
 window.onload();
 
-$('#login').on('click', function(){
+$('#gotoReports').on('click', function(){
 	 myFunction();
 })
 
 function myFunction() {
-    var myWindow = window.open("/verify","", "width=350, height=600");
+    var myWindow = window.open("/page5","", );
 
 }
 
