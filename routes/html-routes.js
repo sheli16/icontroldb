@@ -86,7 +86,7 @@ module.exports = function(app){
 		}
 	});
 
-	app.get('/page3', function(req, res){
+	/*app.get('/page3', function(req, res){
 		if (req.isAuthenticated()) {
 			res.render('page3', {
 				
@@ -96,6 +96,7 @@ module.exports = function(app){
 			res.redirect('/verify');
 		}
 	});
+	*/
 
 	app.get('/page4', function(req, res){
 		if (req.isAuthenticated()) {
