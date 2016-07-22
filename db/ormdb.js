@@ -11,7 +11,7 @@ var connection = mysql.createConnection({
 
 var ormdb = {
     deleteOne: function(uID, cb) {
-        var queryString = 'DELETE * FROM inventory WHERE id = ' + uID; 
+        var queryString = 'DELETE FROM inventory WHERE id = ' + uID; 
         console.log('query selectOne: '+ queryString);
         connection.query(queryString, function(err, res) {
             cb(res);
