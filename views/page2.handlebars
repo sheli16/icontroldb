@@ -133,7 +133,7 @@
                           <td>{{this.invRTP}}</td>
                           <td>{{this.invStock}}</td>
                           <td>{{this.invMRP}}</td>
-                          <td><i class="material-icons">delete</i></td>
+                          <td><form method = "POST" action ="/delete/{{this.id}}" ><button class="material-icons" value={{this.id}}>delete</button></form></td>
                         </tr>
                     {{/if}}
                {{/each}}
