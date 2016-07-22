@@ -169,7 +169,19 @@ module.exports = function(app){
 
 	}); // end  app.post (create)
 
+	app.post('/delete/:id', function (req, res) {
+			   if (req.isAuthenticated()) {
+				
+				ormdb.deleteOne(req.params.id, function(result){			    
+						res.redirect('/page2'); 
+			    }); 
+			} else {
+				res.redirect('/verify')
+			}
+			   
+				
 
+	}); // end  app.post (create)
 	/////////////////////////////////////////////
 	//		End of My Stuff!
 	/////////////////////////////////////////////

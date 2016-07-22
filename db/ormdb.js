@@ -10,8 +10,8 @@ var connection = mysql.createConnection({
 // object relational mapper (ORM)
 
 var ormdb = {
-    selectOne: function(itemID, cb) {
-        var queryString = 'SELECT * FROM inventory WHERE id = ' + itemID; 
+    deleteOne: function(uID, cb) {
+        var queryString = 'DELETE * FROM inventory WHERE id = ' + uID; 
         console.log('query selectOne: '+ queryString);
         connection.query(queryString, function(err, res) {
             cb(res);
