@@ -18,6 +18,7 @@
     letter-spacing: .5px;
     transition: .2s ease-out;
     cursor: pointer;
+    margin-top: 10px;
 }
 
 /* Text inputs */
@@ -49,10 +50,8 @@ textarea.materialize-textarea {
   transition: all 0.3s;
 }
 
-
-
 nav ul a,
-nav .brand-logo {
+nav .brand-logo1 {
   color: #999;
 }
 
@@ -108,27 +107,61 @@ footer.page-footer {
   margin: 0;
 }
 /*------------------------------------------------------------------*/
-h6 {
-  font-family: 'Damion', cursive; 
-  font-size: 25px;
-}
 
-h5 {
-  font-family: 'Squada One', cursive;
-  
+#logoimg{
+  margin-top: 5%;
 }
 
 h1 {
-  font-family: 'Pacifico', cursive;
-  /*font-family: 'Damion', cursive;*/
+  /*font-family: 'Hind', sans-serif;*/
+  /*font-family: 'Pridi', serif;*/
+  font-family: 'Damion', cursive;
   /*font-family: 'Squada One', cursive;*/
-  font-size: 40px;
+  font-size: 50px;
+}
+h2 {
+  /*font-family: 'Pacifico', cursive;*/
+  
+  /*font-family: 'Hind', sans-serif;*/
+  font-family: 'Damion', cursive;
+  /*font-family: 'Squada One', cursive;*/
+  font-size: 30px;
+}
+h5 {
+  font-family: 'Squada One', cursive;
+  /*font-family: 'Damion', cursive;*/
+  
+  }
+  .text-center{
+
+  }
+
+}
+h6 {
+  font-family: 'Squada One', cursive; 
+  font-size: 25px;
+  color:#ffffff;
+}
+
+
+li{
+  margin-top: px;
+
 }
 .mdl-card__title{
   background-color: 255,255,0;
 }
 
-
+#introtext{}
+  /*background-color: black;*/
+  /*width:100%;
+  height:10%;
+  margin-top: 30px;
+  margin-bottom:0px;
+    background-color: black;
+    border: 1px solid black;
+    opacity: 0.9;
+    filter: alpha(opacity=90); /* For IE8 and earlier */
 
 /*-------------------------------------------------------------------*/
 /* Custom Stylesheet */
@@ -181,14 +214,14 @@ h1 {
     }*/
 
     #placeholder {
-    	background-color: #fff999;
+    	background-color: #fff200;
     	width: 800px;
     	height: 300px;
 
     }
 
     #placeholder2 {
-    	background-color: #fff999;
+    	background-color: #fff265;
     	width: 350px;
     	height: 300px;
     	margin-left:50px;
@@ -227,4 +260,39 @@ h1 {
 }
 .signup-panel .button {
   margin-left: 35%;
+}
+#logo-container{
+  margin-top: 0px;
+  font-family: 'Squada One', cursive; 
+}
+
+#login{
+  
+}
+
+a:link {
+    color: white;
+    text-decoration: none
+}
+
+/* visited link */
+a:visited {
+    color: ;
+    text-decoration: none
+}
+
+/* mouse over link */
+a:hover {
+    color: yellow;
+    text-decoration: none
+
+}
+
+/* selected link */
+a:active {
+    color: yellow;
+    text-decoration: none
+}
+li #social{
+  display: inline;
 }
