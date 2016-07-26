@@ -1,18 +1,18 @@
 <br>
 <div class="col s8 center">
-<div id="placeholder2" class="ct-chart ct-golden-section reportView1"></div>
+<div id="placeholder2-b" class="ct-chart ct-golden-section reportView1"></div>
+</div>
+<div class="col s8 center">
+<h5>Pie Chart showing Current Inventory</h5>
 </div>
 <script type="text/javascript">
-  var dbData = JSON.stringify({{chartvar}});
-  console.dir(dbData);
-  var chartLabels[];
-  var chartSeries[];
-  for (prod in dbData) {
-    chartLabels[prod] = dbData[prod].invName;
-    
-    chartSeries[prod] = dbData[prod].invStock;
-  }
-
+  chartLabels = new Array();
+  chartSeries = new Array(); 
+  
+  {{#each chartvar}}
+   chartLabels.push("{{this.invName}}");
+   chartSeries.push({{this.invStock}});  
+  {{/each}}
 
 
   var data = {
@@ -42,5 +42,7 @@ var responsiveOptions = [
 ];
 
 new Chartist.Pie('.ct-chart', data, options, responsiveOptions);
+
+
 
 </script>

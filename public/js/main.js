@@ -1,4 +1,4 @@
-var logSignInfo = require('/verify');
+var logSignInfo = require('verify');
 var page4 = require('page4');
 var page2 = require('page2');
 window.onload();
@@ -8,7 +8,7 @@ $('#gotoReports').on('click', function(){
 })
 
 function myFunction() {
-    var myWindow = window.open("/page5","", );
+    var myWindow = window.open("/page5");
 
 }
 

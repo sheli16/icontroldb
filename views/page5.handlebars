@@ -6,7 +6,7 @@
     </div>
 
     <div class="col-sm-8 text-center">
-      <p><h1>Reports</h1><h5>Click on the Chart you would like to see!</h5>
+      <p><h1>Reports</h1><h5>Click to Show!</h5>
       </p>
               
       <!-- <div class="row"> -->
@@ -68,9 +68,22 @@
 
 <script>
   // first chart
+  
+  chartLabels = new Array();
+  chartSeries = new Array(); 
+  
+  {{#each chartvar}}
+   chartLabels.push("{{this.invName}}");
+   chartSeries.push({{this.invStock}});  
+  {{/each}}
+
+
+
+
   var data = {
   labels: ['Bananas', 'Apples', 'Grapes'],
   series: [20, 15, 40]
+  
 };
 
 var options = {
@@ -98,10 +111,12 @@ new Chartist.Pie('.ct-chart', data, options, responsiveOptions);
 
 //second chart
 new Chartist.Bar('.ct-chart2', {
-    labels: [1, 2, 3, 4],
-    series: [[5, 2, 8, 3]]
-  });
-
+  
+  labels: ['XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL'],
+  series: [20, 60, 120, 200, 180, 20, 10]
+}, {
+  distributeSeries: true
+});
 
 
 

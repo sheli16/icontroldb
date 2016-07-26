@@ -6,7 +6,7 @@ var bodyParser = require('body-parser');
 var passport = require('passport');
 var session = require('express-session');
 var orm = require('./db/orm.js');
-var PORT = process.env.PORT || 3306;
+var PORT = process.env.PORT || 9000;
 
 //Handlebars-------------------------------------------------------
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));

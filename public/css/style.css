@@ -214,14 +214,15 @@ li{
     }*/
 
     #placeholder {
-    	background-color: #fff200;
+    	background-color: wheat;
     	width: 800px;
     	height: 300px;
 
     }
 
+
     #placeholder2 {
-    	background-color: #fff265;
+    	background-color: wheat;
     	width: 350px;
     	height: 300px;
     	margin-left:50px;
@@ -229,6 +230,15 @@ li{
 
     }
     
+    #placeholder2-b {
+      background-color: wheat;
+      width: 600px;
+      height: 500px;
+      margin: 0 auto;
+      padding-left:50px;
+
+    }
+
     button {
     	background-color:255,255,0;
     	 
