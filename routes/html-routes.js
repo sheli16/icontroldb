@@ -62,7 +62,9 @@ module.exports = function(app){
 
 	app.get('/', function(req, res){
 		res.render('index', {
-			
+			loginOut: "Login/Signup",
+		    logURL: "/verify"
+		    
 		});
 	});
 
@@ -75,7 +77,10 @@ module.exports = function(app){
 			
 			ormdb.selectAll(req.user.userId, function(result){
 		            res.render('page2', {
-		            	inventory1: result
+		            	inventory1: result,
+		            	loginOut: "Logout",
+		            	logURL: "/logout",
+		            	uName: req.user.username
 		            });
 			});
 			
@@ -102,7 +107,9 @@ module.exports = function(app){
 		if (req.isAuthenticated()) {
 			console.log(req.user.userId);
 			res.render('page4', {
-				
+				loginOut: "Logout",
+				logURL: "/logout",
+		        uName: req.user.username
 			});
 		}
 		else {
@@ -113,8 +120,14 @@ module.exports = function(app){
 
 	app.get('/page5', function(req, res){
 		if (req.isAuthenticated()) {
-			res.render('page5', {
-				
+			ormdb.selectAll(req.user.userId, function(result){
+
+					res.render('page5', {
+						chartvar: result,
+						loginOut: "Logout",
+						logURL: "/logout",
+				        uName: req.user.username
+					});
 			});
 		}
 		else {
@@ -127,11 +140,11 @@ module.exports = function(app){
 		if (req.isAuthenticated()) {
 			ormdb.selectAll(req.user.userId, function(result){
 		           
-		            console.log('app.get: ')
-		            console.log(result[0].invName)
-		            
 		            res.render('chart1', {
-		            	chartvar: result
+		            	chartvar: result,
+		            	loginOut: "Logout",
+		            	logURL: "/logout",
+		            	uName: req.user.username
 		            });
 			});
 		}
@@ -149,7 +162,10 @@ module.exports = function(app){
 		            console.log(result[0].invName)
 		            
 		            res.render('chart2', {
-		            	chartvar: result
+		            	chartvar: result,
+		            	loginOut: "Logout",
+		            	logURL: "/logout",
+		            	uName: req.user.username
 		            });
 			});
 		}

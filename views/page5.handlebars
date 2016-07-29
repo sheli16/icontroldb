@@ -72,52 +72,62 @@
   chartLabels = new Array();
   chartSeries = new Array(); 
   
-  {{#each chartvar}}
-   chartLabels.push("{{this.invName}}");
-   chartSeries.push({{this.invStock}});  
-  {{/each}}
-
-
-
-
-  var data = {
-  labels: ['Bananas', 'Apples', 'Grapes'],
-  series: [20, 15, 40]
-  
-};
-
-var options = {
-  labelInterpolationFnc: function(value) {
-    return value[0]
+  var promise = new Promise(function(resolve, reject) {
+  // do a thing, possibly async, then…
+          {{#each chartvar}}
+           chartLabels.push("{{this.invName}}");
+           chartSeries.push({{this.invStock}});  
+          {{/each}}
+  if (chartLabels.length > 1) {
+    resolve("Stuff worked!");
   }
-};
-
-var responsiveOptions = [
-  ['screen and (min-width: 640px)', {
-    chartPadding: 30,
-    labelOffset: 100,
-    labelDirection: 'explode',
-    labelInterpolationFnc: function(value) {
-      return value;
-    }
-  }],
-  ['screen and (min-width: 1024px)', {
-    labelOffset: 80,
-    chartPadding: 20
-  }]
-];
-
-new Chartist.Pie('.ct-chart', data, options, responsiveOptions);
-
-//second chart
-new Chartist.Bar('.ct-chart2', {
-  
-  labels: ['XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL'],
-  series: [20, 60, 120, 200, 180, 20, 10]
-}, {
-  distributeSeries: true
+  else {
+    reject(Error("It broke"));
+  }
 });
+ 
+ promise.then(function(result) {
+          console.log(result); // "Stuff worked!"
+          var data = {
+          labels: chartLabels,
+          series: chartSeries 
+          };
 
+          var options = {
+            labelInterpolationFnc: function(value) {
+              return value[0]
+            }
+          };
+
+          var responsiveOptions = [
+            ['screen and (min-width: 640px)', {
+              chartPadding: 30,
+              labelOffset: 100,
+              labelDirection: 'explode',
+              labelInterpolationFnc: function(value) {
+                return value;
+              }
+            }],
+            ['screen and (min-width: 1024px)', {
+              labelOffset: 80,
+              chartPadding: 20
+            }]
+          ];
+
+          new Chartist.Pie('.ct-chart', data, options, responsiveOptions);
+
+          //second chart
+          new Chartist.Bar('.ct-chart2', {
+            
+            labels: chartLabels,
+            series: chartSeries
+          }, {
+            distributeSeries: true
+          });
+
+}, function(err) {
+  console.log(err); // Error: "It broke"
+}); 
 
 
 </script>

@@ -1,14 +1,14 @@
 var orm = require('../db/orm.js');
 var mysql = require('mysql');
-var connection = mysql.createConnection(process.env.JAWSDB_URL);
+//var connection = mysql.createConnection(process.env.JAWSDB_URL);
 
-/* var connection = mysql.createConnection({
+ var connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: process.argv[2],
     database: 'icontrol_db'
 });
-*/
+
 // object relational mapper (ORM)
 
 var ormdb = {

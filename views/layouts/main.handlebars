@@ -38,7 +38,8 @@
     <div class="nav-wrapper container">
       <a id="logo-container" href="/index" class="brand-logo"><img src="../images/icLogoL_head3.png" alt="IControl" width="30px">Control</a>
       <ul class="right hide-on-med-and-down">
-        <li><a id="login" href="/verify">Login/Sign up</a></li>
+        <li>{{uName}}</li>
+        <li><a id="login" href={{logURL}}>{{loginOut}}</a></li>
         <li><a id="login" href="/page2"> Inventory </a></li>
         <li><a id="login" href="/page5"> Reports </a></li>
         <!-- <li><a id="login" onclick="return myFunction('/verify')">Login</a></li> -->
@@ -71,7 +72,7 @@
           <ul>
             <li><a class="white-text" href="/page2">Inventory</a></li>
             <li><a class="white-text" href="/page5">Reports</a></li>
-            <li><a class="white-text" href="/verify">Login</a></li>
+            <li><a class="white-text" href={{logURL}}>{{loginOut}}</a></li>
           </ul>
         </div>
         
