@@ -1,0 +1,30 @@
+<br>
+<div class="col s8 center">
+<div id="placeholder2-b" class="ct-chart ct-golden-section reportView1"></div>
+</div>
+<div class="col s8 center">
+<h5>Bar Chart showing Current Inventory</h5>
+</div>
+<script type="text/javascript">
+  chartLabels = new Array();
+  chartSeries = new Array(); 
+  
+  {{#each chartvar}}
+   chartLabels.push("{{this.invName}}");
+   chartSeries.push({{this.invStock}});  
+  {{/each}}
+
+
+
+
+
+
+  new Chartist.Bar('.ct-chart', {
+    labels: chartLabels,
+    series: chartSeries
+  }, {
+    distributeSeries: true
+  });
+
+
+</script>

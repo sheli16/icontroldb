@@ -1,0 +1,48 @@
+<br>
+<div class="col s8 center">
+<div id="placeholder2-b" class="ct-chart ct-golden-section reportView1"></div>
+</div>
+<div class="col s8 center">
+<h5>Pie Chart showing Current Inventory</h5>
+</div>
+<script type="text/javascript">
+  chartLabels = new Array();
+  chartSeries = new Array(); 
+  
+  {{#each chartvar}}
+   chartLabels.push("{{this.invName}}");
+   chartSeries.push({{this.invStock}});  
+  {{/each}}
+
+
+  var data = {
+  labels: chartLabels,
+  series: chartSeries
+};
+
+var options = {
+  labelInterpolationFnc: function(value) {
+    return value[0]
+  }
+};
+
+var responsiveOptions = [
+  ['screen and (min-width: 640px)', {
+    chartPadding: 30,
+    labelOffset: 100,
+    labelDirection: 'explode',
+    labelInterpolationFnc: function(value) {
+      return value;
+    }
+  }],
+  ['screen and (min-width: 1024px)', {
+    labelOffset: 80,
+    chartPadding: 20
+  }]
+];
+
+new Chartist.Pie('.ct-chart', data, options, responsiveOptions);
+
+
+
+</script>

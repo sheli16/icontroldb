@@ -2,7 +2,7 @@ var UserModel = require('../models/User.js');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var orm = require('../db/orm.js');
-
+var ormdb = require('../db/ormdb.js');
 
 //Setting the strategy for Passport
 passport.use(new LocalStrategy({passReqToCallback : true},
@@ -62,9 +62,9 @@ module.exports = function(app){
 
 	app.get('/', function(req, res){
 		res.render('index', {
-			//welcomeText: "Sign Up",
-			//actionBtn: 'signup',
-			//otherAction: "Signin"
+			loginOut: "Login/Signup",
+		    logURL: "/verify"
+		    
 		});
 	});
 
@@ -74,11 +74,16 @@ module.exports = function(app){
 
 	app.get('/page2', function(req, res){
 		if (req.isAuthenticated()) {
-			res.render('page2', {
-				//welcomeText: "Sign Up",
-				//actionBtn: 'signup',
-				//otherAction: "Signin"
+			
+			ormdb.selectAll(req.user.userId, function(result){
+		            res.render('page2', {
+		            	inventory1: result,
+		            	loginOut: "Logout",
+		            	logURL: "/logout",
+		            	uName: req.user.username
+		            });
 			});
+			
 		}
 		else {
 			
@@ -86,25 +91,25 @@ module.exports = function(app){
 		}
 	});
 
-	app.get('/page3', function(req, res){
+	/*app.get('/page3', function(req, res){
 		if (req.isAuthenticated()) {
 			res.render('page3', {
-				//welcomeText: "Sign Up",
-				//actionBtn: 'signup',
-				//otherAction: "Signin"
+				
 			});
 		}
 		else {
 			res.redirect('/verify');
 		}
 	});
+	*/
 
 	app.get('/page4', function(req, res){
 		if (req.isAuthenticated()) {
+			console.log(req.user.userId);
 			res.render('page4', {
-				//welcomeText: "Sign Up",
-				//actionBtn: 'signup',
-				//otherAction: "Signin"
+				loginOut: "Logout",
+				logURL: "/logout",
+		        uName: req.user.username
 			});
 		}
 		else {
@@ -115,10 +120,14 @@ module.exports = function(app){
 
 	app.get('/page5', function(req, res){
 		if (req.isAuthenticated()) {
-			res.render('page5', {
-				//welcomeText: "Sign Up",
-				//actionBtn: 'signup',
-				//otherAction: "Signin"
+			ormdb.selectAll(req.user.userId, function(result){
+
+					res.render('page5', {
+						chartvar: result,
+						loginOut: "Logout",
+						logURL: "/logout",
+				        uName: req.user.username
+					});
 			});
 		}
 		else {
@@ -127,9 +136,81 @@ module.exports = function(app){
 		}
 	});
 
+	app.get('/chart1', function(req, res){
+		if (req.isAuthenticated()) {
+			ormdb.selectAll(req.user.userId, function(result){
+		           
+		            res.render('chart1', {
+		            	chartvar: result,
+		            	loginOut: "Logout",
+		            	logURL: "/logout",
+		            	uName: req.user.username
+		            });
+			});
+		}
+		else {
+			
+			res.redirect('/verify');
+		}
+	});
 
+	app.get('/chart2', function(req, res){
+		if (req.isAuthenticated()) {
+			ormdb.selectAll(req.user.userId, function(result){
+		           
+		            console.log('app.get: ')
+		            console.log(result[0].invName)
+		            
+		            res.render('chart2', {
+		            	chartvar: result,
+		            	loginOut: "Logout",
+		            	logURL: "/logout",
+		            	uName: req.user.username
+		            });
+			});
+		}
+		else {
+			
+			res.redirect('/verify');
+		}
+	});
 
+	app.post('/update/:id', function (req, res) {
+		    //connection.query('UPDATE burgers SET devoured = ? WHERE id = ?', [true, req.params.id]);            
+            //orm.updateOne('inventory', 'devoured', req.params.id,  function(result){
+            console.log('not ready for this function yet')	
+           	res.redirect('/page3');
+ 			//});
+    });// end  app.post (update)
+		    		
+	
+	app.post('/create', function (req, res) {
+		   if (req.isAuthenticated()) {
+			console.log(req.body.descInput)
+			ormdb.insertOne(req.user.userId, req.body.nameInput, req.body.descInput, req.body.groupInput, req.body.wholeSaleInput,req.body.retailPriceInput, req.body.inStockInput, req.body.mRPInput, function(result){			    
+					res.redirect('/page2'); 
+		    }); 
+		} else {
+			res.redirect('/verify')
+		}
+		   
+			
 
+	}); // end  app.post (create)
+
+	app.post('/delete/:id', function (req, res) {
+			   if (req.isAuthenticated()) {
+				
+				ormdb.deleteOne(req.params.id, function(result){			    
+						res.redirect('/page2'); 
+			    }); 
+			} else {
+				res.redirect('/verify')
+			}
+			   
+				
+
+	}); // end  app.post (create)
 	/////////////////////////////////////////////
 	//		End of My Stuff!
 	/////////////////////////////////////////////
